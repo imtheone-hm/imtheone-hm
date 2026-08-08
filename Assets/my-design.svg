@@ -1,1363 +1,1219 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
-
-  <defs>
-
-    <!-- =========================
-         COLORS
-    ========================== -->
-
-    <linearGradient id="title" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="48%" stop-color="#818cf8"/>
-      <stop offset="100%" stop-color="#e879f9"/>
-    </linearGradient>
-
-    <linearGradient id="cyanPink" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#d946ef"/>
-    </linearGradient>
-
-    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b1023"/>
-      <stop offset="100%" stop-color="#070a16"/>
-    </linearGradient>
-
-    <radialGradient id="bgGlow" cx="70%" cy="35%" r="70%">
-      <stop offset="0%" stop-color="#172554" stop-opacity=".8"/>
-      <stop offset="55%" stop-color="#0b1023" stop-opacity=".5"/>
-      <stop offset="100%" stop-color="#03050d" stop-opacity="1"/>
-    </radialGradient>
-
-
-    <!-- =========================
-         GLOW EFFECTS
-    ========================== -->
-
-    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur stdDeviation="4" result="b"/>
-      <feMerge>
-        <feMergeNode in="b"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
-    <filter id="bigGlow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="18"/>
-    </filter>
-
-
-    <!-- =========================
-         BACKGROUND GRID
-    ========================== -->
-
-    <pattern id="grid"
-             width="32"
-             height="32"
-             patternUnits="userSpaceOnUse">
-
-      <path
-        d="M32 0H0V32"
-        fill="none"
-        stroke="#334155"
-        stroke-opacity=".12"/>
-
-    </pattern>
-
-
-    <!-- =========================
-         ANIMATIONS
-    ========================== -->
-
-    <style>
-
-      .mono {
-        font-family: "Courier New", monospace;
-      }
-
-      .sans {
-        font-family: Arial, sans-serif;
-      }
-
-      .cyan {
-        fill: #22d3ee;
-      }
-
-      .purple {
-        fill: #c084fc;
-      }
-
-      .pink {
-        fill: #e879f9;
-      }
-
-      .white {
-        fill: #e5e7eb;
-      }
-
-      .muted {
-        fill: #94a3b8;
-      }
-
-      .green {
-        fill: #4ade80;
-      }
-
-
-      /* Neon pulse */
-
-      .pulse {
-        animation: pulse 2.4s ease-in-out infinite;
-        transform-origin: center;
-      }
-
-
-      /* Floating cards */
-
-      .float1 {
-        animation: float 5s ease-in-out infinite;
-      }
-
-      .float2 {
-        animation: float 6.5s ease-in-out infinite reverse;
-      }
-
-
-      /* Cursor */
-
-      .blink {
-        animation: blink 1s steps(2,end) infinite;
-      }
-
-
-      /* Moving neon lines */
-
-      .dash {
-        animation: dash 3s linear infinite;
-      }
-
-
-      /* Rotating rings */
-
-      .spin {
-        animation: spin 18s linear infinite;
-        transform-origin: 860px 355px;
-      }
-
-      .spin2 {
-        animation: spin 12s linear infinite reverse;
-        transform-origin: 860px 355px;
-      }
-
-
-      /* Typing */
-
-      .typing1 {
-        animation: type1 7s steps(28,end) infinite;
-      }
-
-      @keyframes pulse {
-
-        0%,100% {
-          opacity: .55;
-        }
-
-        50% {
-          opacity: 1;
-        }
-
-      }
-
-
-      @keyframes float {
-
-        0%,100% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-8px);
-        }
-
-      }
-
-
-      @keyframes blink {
-
-        50% {
-          opacity: 0;
-        }
-
-      }
-
-
-      @keyframes dash {
-
-        to {
-          stroke-dashoffset: -80;
-        }
-
-      }
-
-
-      @keyframes spin {
-
-        to {
-          transform: rotate(360deg);
-        }
-
-      }
-
-
-      @keyframes type1 {
-
-        0%,8% {
-          width: 0;
-        }
-
-        30%,72% {
-          width: 28ch;
-        }
-
-        80%,100% {
-          width: 0;
-        }
-
-      }
-
-    </style>
-
-  </defs>
-
-
-  <!-- ==================================================
-       BACKGROUND
-  =================================================== -->
-
-  <rect
-    width="1200"
-    height="900"
-    rx="30"
-    fill="#03050d"/>
-
-
-  <rect
-    x="18"
-    y="18"
-    width="1164"
-    height="864"
-    rx="26"
-    fill="url(#bgGlow)"
-    stroke="#26345c"
-    stroke-width="2"/>
-
-
-  <rect
-    x="18"
-    y="18"
-    width="1164"
-    height="864"
-    rx="26"
-    fill="url(#grid)"/>
-
-
-  <!-- Ambient glow -->
-
-  <circle
-    cx="1020"
-    cy="120"
-    r="150"
-    fill="#7c3aed"
-    opacity=".08"
-    filter="url(#bigGlow)"/>
-
-  <circle
-    cx="180"
-    cy="730"
-    r="170"
-    fill="#0891b2"
-    opacity=".07"
-    filter="url(#bigGlow)"/>
-
-
-  <!-- ==================================================
-       HEADER
-  =================================================== -->
-
-  <text
-    x="58"
-    y="78"
-    class="mono"
-    font-size="48"
-    font-weight="700"
-    fill="url(#title)">
-
-    HAMDI HOCINE AMINE
-
-  </text>
-
-
-  <text
-    x="60"
-    y="112"
-    class="mono cyan"
-    font-size="18">
-
-    FULL STACK DEVELOPER
-    •
-    VISUAL COMPUTING STUDENT
-    •
-    GRAPHIC DESIGNER
-
-  </text>
-
-
-  <line
-    x1="58"
-    y1="132"
-    x2="1138"
-    y2="132"
-    stroke="url(#cyanPink)"
-    stroke-width="2"
-    opacity=".8"/>
-
-
-  <!-- Animated signal -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200"
+     height="900"
+     viewBox="0 0 1200 900">
+
+<defs>
+
+<!-- ================= COLORS ================= -->
+
+<linearGradient id="title" x1="0%" y1="0%" x2="100%" y2="0%">
+  <stop offset="0%" stop-color="#22d3ee"/>
+  <stop offset="50%" stop-color="#818cf8"/>
+  <stop offset="100%" stop-color="#e879f9"/>
+</linearGradient>
+
+<linearGradient id="cyanPink" x1="0%" y1="0%" x2="100%" y2="0%">
+  <stop offset="0%" stop-color="#22d3ee"/>
+  <stop offset="100%" stop-color="#d946ef"/>
+</linearGradient>
+
+<linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+  <stop offset="0%" stop-color="#0b1023"/>
+  <stop offset="100%" stop-color="#070a16"/>
+</linearGradient>
+
+<radialGradient id="bgGlow" cx="70%" cy="35%" r="70%">
+  <stop offset="0%" stop-color="#172554"/>
+  <stop offset="55%" stop-color="#0b1023"/>
+  <stop offset="100%" stop-color="#03050d"/>
+</radialGradient>
+
+<!-- ================= GLOW ================= -->
+
+<filter id="glow">
+  <feGaussianBlur stdDeviation="4" result="blur"/>
+  <feMerge>
+    <feMergeNode in="blur"/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+
+<filter id="bigGlow">
+  <feGaussianBlur stdDeviation="18"/>
+</filter>
+
+<!-- ================= GRID ================= -->
+
+<pattern id="grid"
+         width="32"
+         height="32"
+         patternUnits="userSpaceOnUse">
 
   <path
-    d="M60 150 H290 L315 174 H470 L495 150 H650"
+    d="M32 0H0V32"
     fill="none"
-    stroke="#22d3ee"
-    stroke-width="2"
-    stroke-dasharray="10 14"
-    class="dash"
-    opacity=".7"/>
+    stroke="#334155"
+    stroke-opacity=".12"/>
 
+</pattern>
 
-  <circle
-    cx="650"
-    cy="150"
-    r="5"
-    fill="#e879f9"
-    class="pulse"
-    filter="url(#glow)"/>
+<!-- ================= ANIMATIONS ================= -->
 
+<style>
 
-  <!-- ==================================================
-       LEFT TERMINAL
-  =================================================== -->
+.mono{
+  font-family:"Courier New",monospace;
+}
 
-  <rect
-    x="48"
-    y="185"
-    width="520"
-    height="420"
-    rx="20"
-    fill="url(#panel)"
-    stroke="#334269"
-    stroke-width="2"/>
+.cyan{
+  fill:#22d3ee;
+}
 
+.purple{
+  fill:#c084fc;
+}
 
-  <!-- Terminal dots -->
+.pink{
+  fill:#e879f9;
+}
 
-  <circle
-    cx="74"
-    cy="212"
-    r="6"
-    fill="#f472b6"/>
+.white{
+  fill:#e5e7eb;
+}
 
-  <circle
-    cx="94"
-    cy="212"
-    r="6"
-    fill="#fbbf24"/>
+.muted{
+  fill:#94a3b8;
+}
 
-  <circle
-    cx="114"
-    cy="212"
-    r="6"
-    fill="#22d3ee"/>
+.green{
+  fill:#4ade80;
+}
 
+.pulse{
+  animation:pulse 2.5s ease-in-out infinite;
+}
 
-  <text
-    x="142"
-    y="217"
-    class="mono muted"
-    font-size="13">
+.float1{
+  animation:float 5s ease-in-out infinite;
+}
 
-    ~/profile/terminal
+.float2{
+  animation:float 6s ease-in-out infinite reverse;
+}
 
-  </text>
+.dash{
+  animation:dash 3s linear infinite;
+}
 
+.spin{
+  animation:spin 18s linear infinite;
+  transform-origin:860px 355px;
+}
 
-  <!-- whoami -->
+.spin2{
+  animation:spin 12s linear infinite reverse;
+  transform-origin:860px 355px;
+}
 
-  <text
-    x="70"
-    y="255"
-    class="mono cyan"
-    font-size="17">
+.blink{
+  animation:blink 1s steps(2,end) infinite;
+}
 
-    &gt; whoami
+@keyframes pulse{
 
-  </text>
+  0%,100%{
+    opacity:.45;
+  }
 
+  50%{
+    opacity:1;
+  }
 
-  <text
-    x="90"
-    y="280"
-    class="mono white"
-    font-size="15">
+}
 
-    Hamdi Hocine Amine
+@keyframes float{
 
-  </text>
+  0%,100%{
+    transform:translateY(0);
+  }
 
+  50%{
+    transform:translateY(-8px);
+  }
 
-  <!-- education -->
+}
 
-  <text
-    x="70"
-    y="316"
-    class="mono purple"
-    font-size="17">
+@keyframes dash{
 
-    &gt; education
+  to{
+    stroke-dashoffset:-80;
+  }
 
-  </text>
+}
 
+@keyframes spin{
 
-  <text
-    x="90"
-    y="341"
-    class="mono white"
-    font-size="14">
+  to{
+    transform:rotate(360deg);
+  }
 
-    Visual Computing Student
+}
 
-  </text>
+@keyframes blink{
 
+  50%{
+    opacity:0;
+  }
 
-  <text
-    x="90"
-    y="362"
-    class="mono muted"
-    font-size="13">
+}
 
-    Exploring code × graphics × creativity
+</style>
 
-  </text>
+</defs>
 
 
-  <!-- Stack -->
+<!-- =====================================================
+     BACKGROUND
+====================================================== -->
 
-  <text
-    x="70"
-    y="400"
-    class="mono cyan"
-    font-size="17">
+<rect
+  width="1200"
+  height="900"
+  rx="30"
+  fill="#03050d"/>
 
-    &gt; stack
+<rect
+  x="18"
+  y="18"
+  width="1164"
+  height="864"
+  rx="26"
+  fill="url(#bgGlow)"
+  stroke="#26345c"
+  stroke-width="2"/>
 
-  </text>
+<rect
+  x="18"
+  y="18"
+  width="1164"
+  height="864"
+  rx="26"
+  fill="url(#grid)"/>
+
+
+<!-- Ambient lights -->
 
+<circle
+  cx="1030"
+  cy="120"
+  r="150"
+  fill="#7c3aed"
+  opacity=".08"
+  filter="url(#bigGlow)"/>
 
-  <text
-    x="90"
-    y="425"
-    class="mono white"
-    font-size="13">
+<circle
+  cx="170"
+  cy="740"
+  r="170"
+  fill="#0891b2"
+  opacity=".07"
+  filter="url(#bigGlow)"/>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
-    C / C++ • Python • Java • JavaScript
+<text
+  x="58"
+  y="78"
+  class="mono"
+  font-size="48"
+  font-weight="700"
+  fill="url(#title)">
 
-  </text>
+HAMDI HOCINE AMINE
 
+</text>
 
-  <text
-    x="90"
-    y="446"
-    class="mono white"
-    font-size="13">
 
-    JavaFX • Node.js • HTML • CSS • SQL
+<text
+  x="60"
+  y="112"
+  class="mono cyan"
+  font-size="17">
 
-  </text>
+FULL STACK DEVELOPER
+•
+VISUAL COMPUTING STUDENT
+•
+GRAPHIC DESIGNER
 
+</text>
 
-  <text
-    x="90"
-    y="467"
-    class="mono white"
-    font-size="13">
 
-    Git • Linux • Flutter • JDBC
+<line
+  x1="58"
+  y1="132"
+  x2="1138"
+  y2="132"
+  stroke="url(#cyanPink)"
+  stroke-width="2"/>
 
-  </text>
 
+<!-- animated neon line -->
 
-  <!-- Design -->
+<path
+  d="M60 150
+     H290
+     L315 174
+     H470
+     L495 150
+     H650"
 
-  <text
-    x="70"
-    y="505"
-    class="mono pink"
-    font-size="17">
+  fill="none"
+  stroke="#22d3ee"
+  stroke-width="2"
+  stroke-dasharray="10 14"
+  class="dash"/>
 
-    &gt; design
 
-  </text>
+<circle
+  cx="650"
+  cy="150"
+  r="5"
+  fill="#e879f9"
+  class="pulse"
+  filter="url(#glow)"/>
 
 
-  <text
-    x="90"
-    y="530"
-    class="mono white"
-    font-size="13">
+<!-- =====================================================
+     TERMINAL
+====================================================== -->
 
-    Figma • Photoshop • Illustrator • UI/UX
+<rect
+  x="48"
+  y="185"
+  width="520"
+  height="420"
+  rx="20"
+  fill="url(#panel)"
+  stroke="#334269"
+  stroke-width="2"/>
 
-  </text>
 
+<!-- terminal buttons -->
 
-  <!-- Status -->
+<circle
+  cx="74"
+  cy="212"
+  r="6"
+  fill="#f472b6"/>
 
-  <text
-    x="70"
-    y="568"
-    class="mono green"
-    font-size="14">
+<circle
+  cx="94"
+  cy="212"
+  r="6"
+  fill="#fbbf24"/>
 
-    &gt; status: ONLINE
+<circle
+  cx="114"
+  cy="212"
+  r="6"
+  fill="#22d3ee"/>
 
-  </text>
 
+<text
+  x="142"
+  y="217"
+  class="mono muted"
+  font-size="13">
 
-  <rect
-    x="225"
-    y="555"
-    width="9"
-    height="16"
-    fill="#22d3ee"
-    class="blink"/>
+~/profile/terminal
 
+</text>
 
-  <!-- Typing -->
 
-  <rect
-    x="70"
-    y="585"
-    width="450"
-    height="2"
-    fill="#172554"/>
+<!-- WHOAMI -->
 
+<text
+  x="70"
+  y="255"
+  class="mono cyan"
+  font-size="17">
 
-  <text
-    x="70"
-    y="600"
-    class="mono"
-    font-size="13"
-    fill="#22d3ee">
+&gt; whoami
 
-    $
+</text>
 
-    <tspan
-      class="typing1"
-      fill="#e5e7eb">
+<text
+  x="90"
+  y="280"
+  class="mono white"
+  font-size="15">
 
-      building useful digital experiences...
+Hamdi Hocine Amine
 
-    </tspan>
+</text>
 
-  </text>
 
+<!-- EDUCATION -->
 
-  <!-- ==================================================
-       VISUAL COMPUTING CORE
-  =================================================== -->
+<text
+  x="70"
+  y="316"
+  class="mono purple"
+  font-size="17">
 
-  <rect
-    x="590"
-    y="185"
-    width="562"
-    height="420"
-    rx="20"
-    fill="url(#panel)"
-    stroke="#334269"
-    stroke-width="2"/>
+&gt; education
 
+</text>
 
-  <text
-    x="620"
-    y="220"
-    class="mono purple"
-    font-size="15">
+<text
+  x="90"
+  y="341"
+  class="mono white"
+  font-size="14">
 
-    &lt; VISUAL_COMPUTING_CORE /&gt;
+Visual Computing Student
 
-  </text>
+</text>
 
+<text
+  x="90"
+  y="362"
+  class="mono muted"
+  font-size="13">
 
-  <!-- Rotating rings -->
+Exploring code × graphics × creativity
 
-  <g
-    class="spin"
-    opacity=".75">
+</text>
 
-    <circle
-      cx="860"
-      cy="355"
-      r="145"
-      fill="none"
-      stroke="#22d3ee"
-      stroke-width="1"
-      stroke-dasharray="3 14"/>
 
-    <circle
-      cx="860"
-      cy="355"
-      r="112"
-      fill="none"
-      stroke="#c084fc"
-      stroke-width="1"
-      stroke-dasharray="12 10"/>
+<!-- STACK -->
 
-  </g>
+<text
+  x="70"
+  y="400"
+  class="mono cyan"
+  font-size="17">
 
+&gt; stack
 
-  <g
-    class="spin2"
-    opacity=".5">
+</text>
 
-    <circle
-      cx="860"
-      cy="355"
-      r="82"
-      fill="none"
-      stroke="#e879f9"
-      stroke-width="1"
-      stroke-dasharray="4 8"/>
+<text
+  x="90"
+  y="425"
+  class="mono white"
+  font-size="13">
 
-  </g>
+C / C++ • Python • Java • JavaScript
 
+</text>
 
-  <!-- Core -->
+<text
+  x="90"
+  y="446"
+  class="mono white"
+  font-size="13">
 
-  <circle
-    cx="860"
-    cy="355"
-    r="48"
-    fill="#080d1d"
-    stroke="url(#cyanPink)"
-    stroke-width="3"
-    filter="url(#glow)"/>
+React • Django • Node.js • HTML • CSS
 
+</text>
 
-  <text
-    x="833"
-    y="366"
-    class="mono pink"
-    font-size="27">
+<text
+  x="90"
+  y="467"
+  class="mono white"
+  font-size="13">
 
-    &lt;/&gt;
+SQL • Git • Linux • JavaFX • JDBC
 
-  </text>
+</text>
 
 
-  <!-- ==================================================
-       CONNECTIONS
-  =================================================== -->
+<!-- DESIGN -->
 
-  <g
-    fill="none"
-    stroke-width="2"
-    class="dash">
+<text
+  x="70"
+  y="505"
+  class="mono pink"
+  font-size="17">
 
-    <path
-      d="M860 307 L860 250 L700 250"
-      stroke="#22d3ee"
-      stroke-dasharray="8 10"/>
+&gt; design
 
-    <path
-      d="M908 355 L990 355 L1040 305"
-      stroke="#d946ef"
-      stroke-dasharray="8 10"/>
+</text>
 
-    <path
-      d="M860 403 L860 455"
-      stroke="#a855f7"
-      stroke-dasharray="8 10"/>
+<text
+  x="90"
+  y="530"
+  class="mono white"
+  font-size="13">
 
-    <path
-      d="M812 355 L760 355 L760 425"
-      stroke="#22d3ee"
-      stroke-dasharray="8 10"/>
+Figma • Photoshop • Illustrator • UI/UX
 
-  </g>
+</text>
 
 
-  <!-- ==================================================
-       FRONTEND
-  =================================================== -->
+<!-- STATUS -->
 
-  <g class="float1">
+<text
+  x="70"
+  y="568"
+  class="mono green"
+  font-size="14">
 
-    <rect
-      x="620"
-      y="235"
-      width="150"
-      height="70"
-      rx="14"
-      fill="#090f22"
-      stroke="#22d3ee"/>
+&gt; status: ONLINE
 
+</text>
 
-    <text
-      x="640"
-      y="260"
-      class="mono cyan"
-      font-size="14">
+<rect
+  x="225"
+  y="555"
+  width="9"
+  height="16"
+  fill="#22d3ee"
+  class="blink"/>
 
-      FRONTEND
 
-    </text>
+<line
+  x1="70"
+  y1="585"
+  x2="520"
+  y2="585"
+  stroke="#172554"/>
 
 
-    <text
-      x="640"
-      y="282"
-      class="mono white"
-      font-size="12">
+<text
+  x="70"
+  y="600"
+  class="mono cyan"
+  font-size="13">
 
-      React • JS • UI
+$ building digital experiences...
 
-    </text>
+</text>
 
-  </g>
 
+<!-- =====================================================
+     VISUAL COMPUTING CORE
+====================================================== -->
 
-  <!-- ==================================================
-       BACKEND
-  =================================================== -->
+<rect
+  x="590"
+  y="185"
+  width="562"
+  height="420"
+  rx="20"
+  fill="url(#panel)"
+  stroke="#334269"
+  stroke-width="2"/>
 
-  <g class="float2">
 
-    <rect
-      x="970"
-      y="270"
-      width="150"
-      height="70"
-      rx="14"
-      fill="#090f22"
-      stroke="#d946ef"/>
+<text
+  x="620"
+  y="220"
+  class="mono purple"
+  font-size="15">
 
+&lt; VISUAL_COMPUTING_CORE /&gt;
 
-    <text
-      x="990"
-      y="295"
-      class="mono pink"
-      font-size="14">
+</text>
 
-      BACKEND
 
-    </text>
+<!-- rotating rings -->
 
+<g class="spin">
 
-    <text
-      x="990"
-      y="317"
-      class="mono white"
-      font-size="12">
+<circle
+  cx="860"
+  cy="355"
+  r="145"
+  fill="none"
+  stroke="#22d3ee"
+  stroke-width="1"
+  stroke-dasharray="3 14"/>
 
-      Node • Python • SQL
+<circle
+  cx="860"
+  cy="355"
+  r="112"
+  fill="none"
+  stroke="#c084fc"
+  stroke-width="1"
+  stroke-dasharray="12 10"/>
 
-    </text>
+</g>
 
-  </g>
 
+<g class="spin2">
 
-  <!-- ==================================================
-       VISUAL COMPUTING
-  =================================================== -->
+<circle
+  cx="860"
+  cy="355"
+  r="82"
+  fill="none"
+  stroke="#e879f9"
+  stroke-width="1"
+  stroke-dasharray="4 8"/>
 
-  <g class="float1">
+</g>
 
-    <rect
-      x="615"
-      y="425"
-      width="245"
-      height="100"
-      rx="14"
-      fill="#090f22"
-      stroke="#a855f7"/>
 
+<!-- Core -->
 
-    <text
-      x="635"
-      y="451"
-      class="mono purple"
-      font-size="14"
-      font-weight="700">
+<circle
+  cx="860"
+  cy="355"
+  r="48"
+  fill="#080d1d"
+  stroke="url(#cyanPink)"
+  stroke-width="3"
+  filter="url(#glow)"/>
 
-      VISUAL COMPUTING
 
-    </text>
+<text
+  x="833"
+  y="366"
+  class="mono pink"
+  font-size="27">
 
+&lt;/&gt;
 
-    <text
-      x="635"
-      y="475"
-      class="mono white"
-      font-size="12">
+</text>
 
-      Computer Graphics
 
-    </text>
+<!-- =====================================================
+     CONNECTIONS
+====================================================== -->
 
+<g
+  fill="none"
+  stroke-width="2"
+  class="dash">
 
-    <text
-      x="635"
-      y="495"
-      class="mono white"
-      font-size="12">
+<path
+  d="M860 307 L860 250 L700 250"
+  stroke="#22d3ee"
+  stroke-dasharray="8 10"/>
 
-      3D • Visualization
+<path
+  d="M908 355 L990 355 L1040 305"
+  stroke="#d946ef"
+  stroke-dasharray="8 10"/>
 
-    </text>
+<path
+  d="M860 403 L860 455"
+  stroke="#a855f7"
+  stroke-dasharray="8 10"/>
 
+<path
+  d="M812 355 L760 355 L760 425"
+  stroke="#22d3ee"
+  stroke-dasharray="8 10"/>
 
-    <text
-      x="635"
-      y="515"
-      class="mono muted"
-      font-size="11">
+</g>
 
-      Creative Technology
 
-    </text>
+<!-- =====================================================
+     FRONTEND
+====================================================== -->
 
-  </g>
+<g class="float1">
 
+<rect
+  x="620"
+  y="235"
+  width="150"
+  height="70"
+  rx="14"
+  fill="#090f22"
+  stroke="#22d3ee"/>
 
-  <!-- ==================================================
-       DESIGN
-  =================================================== -->
+<text
+  x="640"
+  y="260"
+  class="mono cyan"
+  font-size="14">
 
-  <g class="float2">
+FRONTEND
 
-    <rect
-      x="875"
-      y="425"
-      width="245"
-      height="100"
-      rx="14"
-      fill="#090f22"
-      stroke="#22d3ee"/>
+</text>
 
+<text
+  x="640"
+  y="282"
+  class="mono white"
+  font-size="12">
 
-    <text
-      x="895"
-      y="451"
-      class="mono cyan"
-      font-size="14"
-      font-weight="700">
+React • JS • UI
 
-      DESIGN
+</text>
 
-    </text>
+</g>
 
 
-    <text
-      x="895"
-      y="475"
-      class="mono white"
-      font-size="12">
+<!-- =====================================================
+     BACKEND
+====================================================== -->
 
-      Figma • Photoshop
+<g class="float2">
 
-    </text>
+<rect
+  x="970"
+  y="270"
+  width="150"
+  height="70"
+  rx="14"
+  fill="#090f22"
+  stroke="#d946ef"/>
 
+<text
+  x="990"
+  y="295"
+  class="mono pink"
+  font-size="14">
 
-    <text
-      x="895"
-      y="495"
-      class="mono white"
-      font-size="12">
+BACKEND
 
-      Illustrator • UI/UX
+</text>
 
-    </text>
+<text
+  x="990"
+  y="317"
+  class="mono white"
+  font-size="12">
 
+Django • Node • SQL
 
-    <text
-      x="895"
-      y="515"
-      class="mono muted"
-      font-size="11">
+</text>
 
-      Visual Identity
+</g>
 
-    </text>
 
-  </g>
+<!-- =====================================================
+     VISUAL COMPUTING
+====================================================== -->
 
+<g class="float1">
 
-  <!-- ==================================================
-       PARTICLES
-  =================================================== -->
+<rect
+  x="615"
+  y="425"
+  width="245"
+  height="100"
+  rx="14"
+  fill="#090f22"
+  stroke="#a855f7"/>
 
-  <g fill="#22d3ee">
+<text
+  x="635"
+  y="451"
+  class="mono purple"
+  font-size="14"
+  font-weight="700">
 
-    <circle
-      cx="610"
-      cy="330"
-      r="2"
-      class="pulse"/>
+VISUAL COMPUTING
 
-    <circle
-      cx="690"
-      cy="205"
-      r="2"
-      class="pulse"/>
+</text>
 
-    <circle
-      cx="1040"
-      cy="210"
-      r="2"
-      class="pulse"/>
+<text
+  x="635"
+  y="475"
+  class="mono white"
+  font-size="12">
 
-    <circle
-      cx="1110"
-      cy="390"
-      r="2"
-      class="pulse"/>
+Computer Graphics
 
-    <circle
-      cx="900"
-      cy="560"
-      r="2"
-      class="pulse"/>
+</text>
 
-    <circle
-      cx="650"
-      cy="550"
-      r="2"
-      class="pulse"/>
+<text
+  x="635"
+  y="495"
+  class="mono white"
+  font-size="12">
 
-  </g>
+3D • Visualization
 
+</text>
 
-  <g fill="#e879f9">
+<text
+  x="635"
+  y="515"
+  class="mono muted"
+  font-size="11">
 
-    <circle
-      cx="735"
-      cy="195"
-      r="2"
-      class="pulse"/>
+Creative Technology
 
-    <circle
-      cx="1070"
-      cy="420"
-      r="2"
-      class="pulse"/>
+</text>
 
-    <circle
-      cx="815"
-      cy="545"
-      r="2"
-      class="pulse"/>
+</g>
 
-    <circle
-      cx="930"
-      cy="205"
-      r="2"
-      class="pulse"/>
 
-  </g>
+<!-- =====================================================
+     DESIGN
+====================================================== -->
 
+<g class="float2">
 
-  <!-- ==================================================
-       PROJECTS
-  =================================================== -->
+<rect
+  x="875"
+  y="425"
+  width="245"
+  height="100"
+  rx="14"
+  fill="#090f22"
+  stroke="#22d3ee"/>
 
-  <text
-    x="58"
-    y="650"
-    class="mono"
-    font-size="18"
-    font-weight="700"
-    fill="url(#title)">
+<text
+  x="895"
+  y="451"
+  class="mono cyan"
+  font-size="14"
+  font-weight="700">
 
-    SELECTED PROJECTS
+DESIGN
 
-  </text>
+</text>
 
+<text
+  x="895"
+  y="475"
+  class="mono white"
+  font-size="12">
 
-  <!-- Project 1 -->
+Figma • Photoshop
 
-  <rect
-    x="48"
-    y="675"
-    width="340"
-    height="120"
-    rx="16"
-    fill="#080d1d"
-    stroke="#26345c"/>
+</text>
 
+<text
+  x="895"
+  y="495"
+  class="mono white"
+  font-size="12">
 
-  <text
-    x="68"
-    y="705"
-    class="mono cyan"
-    font-size="15">
+Illustrator • UI/UX
 
-    01 / ASSEMBLY CALCULATOR
+</text>
 
-  </text>
+<text
+  x="895"
+  y="515"
+  class="mono muted"
+  font-size="11">
 
+Visual Identity
 
-  <text
-    x="68"
-    y="728"
-    class="mono white"
-    font-size="12">
+</text>
 
-    x86 / TASM • Number systems
+</g>
 
-  </text>
 
+<!-- =====================================================
+     PARTICLES
+====================================================== -->
 
-  <text
-    x="68"
-    y="750"
-    class="mono muted"
-    font-size="12">
+<g fill="#22d3ee">
 
-    Arithmetic + binary/hex conversion
+<circle cx="610" cy="330" r="2" class="pulse"/>
+<circle cx="690" cy="205" r="2" class="pulse"/>
+<circle cx="1040" cy="210" r="2" class="pulse"/>
+<circle cx="1110" cy="390" r="2" class="pulse"/>
+<circle cx="900" cy="560" r="2" class="pulse"/>
+<circle cx="650" cy="550" r="2" class="pulse"/>
 
-  </text>
+</g>
 
 
-  <text
-    x="68"
-    y="775"
-    class="mono purple"
-    font-size="12">
+<g fill="#e879f9">
 
-    LOW-LEVEL DEVELOPMENT
+<circle cx="735" cy="195" r="2" class="pulse"/>
+<circle cx="1070" cy="420" r="2" class="pulse"/>
+<circle cx="815" cy="545" r="2" class="pulse"/>
+<circle cx="930" cy="205" r="2" class="pulse"/>
 
-  </text>
+</g>
 
 
-  <!-- Project 2 -->
+<!-- =====================================================
+     YOUR REAL PROJECTS
+====================================================== -->
 
-  <rect
-    x="405"
-    y="675"
-    width="340"
-    height="120"
-    rx="16"
-    fill="#080d1d"
-    stroke="#26345c"/>
+<text
+  x="58"
+  y="650"
+  class="mono"
+  font-size="18"
+  font-weight="700"
+  fill="url(#title)">
 
+SELECTED PROJECTS
 
-  <text
-    x="425"
-    y="705"
-    class="mono pink"
-    font-size="15">
+</text>
 
-    02 / LIBRARY MANAGEMENT
 
-  </text>
+<!-- PROJECT 1 -->
 
+<rect
+  x="48"
+  y="675"
+  width="340"
+  height="120"
+  rx="16"
+  fill="#080d1d"
+  stroke="#26345c"/>
 
-  <text
-    x="425"
-    y="728"
-    class="mono white"
-    font-size="12">
+<text
+  x="68"
+  y="703"
+  class="mono cyan"
+  font-size="14"
+  font-weight="700">
 
-    JavaFX • JDBC • SQL
+01 / AI RECRUITMENT PLATFORM
 
-  </text>
+</text>
 
+<text
+  x="68"
+  y="726"
+  class="mono white"
+  font-size="11.5">
 
-  <text
-    x="425"
-    y="750"
-    class="mono muted"
-    font-size="12">
+RH + Candidate Web Application
 
-    Desktop app connected to a database
+</text>
 
-  </text>
+<text
+  x="68"
+  y="747"
+  class="mono muted"
+  font-size="11.5">
 
+AI candidate scoring + job matching
 
-  <text
-    x="425"
-    y="775"
-    class="mono purple"
-    font-size="12">
+</text>
 
-    SOFTWARE ENGINEERING
+<text
+  x="68"
+  y="768"
+  class="mono muted"
+  font-size="11.5">
 
-  </text>
+React • Django • AI Models
 
+</text>
 
-  <!-- Project 3 -->
+<text
+  x="68"
+  y="789"
+  class="mono purple"
+  font-size="10.5">
 
-  <rect
-    x="762"
-    y="675"
-    width="390"
-    height="120"
-    rx="16"
-    fill="#080d1d"
-    stroke="#26345c"/>
+TREE MODEL • PHI MODEL
 
+</text>
 
-  <text
-    x="782"
-    y="705"
-    class="mono purple"
-    font-size="15">
 
-    03 / REBUILDING PLATFORM
+<!-- PROJECT 2 -->
 
-  </text>
+<rect
+  x="405"
+  y="675"
+  width="340"
+  height="120"
+  rx="16"
+  fill="#080d1d"
+  stroke="#26345c"/>
 
+<text
+  x="425"
+  y="703"
+  class="mono pink"
+  font-size="14"
+  font-weight="700">
 
-  <text
-    x="782"
-    y="728"
-    class="mono white"
-    font-size="12">
+02 / 2048 GAME
 
-    Web • UX • Project coordination
+</text>
 
-  </text>
+<text
+  x="425"
+  y="726"
+  class="mono white"
+  font-size="11.5">
 
+Interactive browser game
 
-  <text
-    x="782"
-    y="750"
-    class="mono muted"
-    font-size="12">
+</text>
 
-    Map-based progress + needs + projects
+<text
+  x="425"
+  y="747"
+  class="mono muted"
+  font-size="11.5">
 
-  </text>
+Grid logic • scoring • game state
 
+</text>
 
-  <text
-    x="782"
-    y="775"
-    class="mono cyan"
-    font-size="12">
+<text
+  x="425"
+  y="768"
+  class="mono muted"
+  font-size="11.5">
 
-    HACKATHON PROJECT
+Game Logic • UI • Interaction
 
-  </text>
+</text>
 
+<text
+  x="425"
+  y="789"
+  class="mono purple"
+  font-size="10.5">
 
-  <!-- ==================================================
-       SOCIAL BAR
-  =================================================== -->
+GAME DEVELOPMENT
 
-  <line
-    x1="48"
-    y1="825"
-    x2="1152"
-    y2="825"
-    stroke="#26345c"/>
+</text>
 
 
-  <text
-    x="60"
-    y="855"
-    class="mono muted"
-    font-size="13">
+<!-- PROJECT 3 -->
 
-    CONNECT
+<rect
+  x="762"
+  y="675"
+  width="390"
+  height="120"
+  rx="16"
+  fill="#080d1d"
+  stroke="#26345c"/>
 
-  </text>
+<text
+  x="782"
+  y="703"
+  class="mono purple"
+  font-size="14"
+  font-weight="700">
 
+03 / DESIGN SERVICE WEBSITE
 
-  <!-- ==================================================
-       GITHUB
-       Replace YOUR_USERNAME
-  =================================================== -->
+</text>
 
-  <a
-    href="https://github.com/YOUR_USERNAME"
-    target="_blank">
+<text
+  x="782"
+  y="726"
+  class="mono white"
+  font-size="11.5">
 
-    <circle
-      cx="145"
-      cy="850"
-      r="22"
-      fill="#0b1023"
-      stroke="#22d3ee"/>
+Web platform for my design services
 
+</text>
 
-    <!-- GitHub Octocat -->
+<text
+  x="782"
+  y="747"
+  class="mono muted"
+  font-size="11.5">
 
-    <g
-      transform="translate(132 837) scale(.027)"
-      fill="#22d3ee">
+Services • Portfolio • Client experience
 
-      <path
-        d="M512 32C247 32 32 247 32 512c0 212.2 137.6 392.1 328.4 455.7 24 4.4 32.8-10.4 32.8-23.1 0-11.5-.4-41.9-.7-82.3-133.6 29-161.9-64.4-161.9-64.4-21.8-55.5-53.3-70.3-53.3-70.3-43.6-29.8 3.3-29.2 3.3-29.2 48.2 3.4 73.6 49.5 73.6 49.5 42.8 73.4 112.2 52.2 139.5 39.9 4.3-31 16.7-52.2 30.4-64.2-106.7-12.1-218.8-53.3-218.8-237.2 0-52.4 18.7-95.2 49.4-128.8-5-12.1-21.4-60.9 4.7-127 0 0 40.3-12.9 132.1 49.2 38.3-10.6 79.4-15.9 120.3-16.1 40.9.2 82 5.5 120.3 16.1 91.8-62.1 132-49.2 132-49.2 26.2 66.1 9.8 114.9 4.8 127 30.8 33.6 49.4 76.4 49.4 128.8 0 184.3-112.3 224.9-219.2 236.8 17.2 14.8 32.6 43.9 32.6 88.5 0 63.9-.6 115.4-.6 131.1 0 12.8 8.7 27.6 33 23C874.5 904 1008 724 1008 512 1008 247 793 32 528 32h-16z"/>
+</text>
 
-    </g>
+<text
+  x="782"
+  y="768"
+  class="mono muted"
+  font-size="11.5">
 
-  </a>
+React • UI/UX • Graphic Design
 
+</text>
 
-  <!-- ==================================================
-       LINKEDIN
-  =================================================== -->
+<text
+  x="782"
+  y="789"
+  class="mono cyan"
+  font-size="10.5">
 
-  <a
-    href="https://www.linkedin.com/in/amine-hamdi-085165326/"
-    target="_blank">
+CREATIVE DEVELOPMENT
 
-    <circle
-      cx="200"
-      cy="850"
-      r="22"
-      fill="#0b1023"
-      stroke="#818cf8"/>
+</text>
 
 
-    <!-- LinkedIn logo -->
+<!-- =====================================================
+     SOCIAL SECTION
+====================================================== -->
 
-    <rect
-      x="188"
-      y="845"
-      width="5"
-      height="15"
-      rx="1"
-      fill="#818cf8"/>
+<line
+  x1="48"
+  y1="825"
+  x2="1152"
+  y2="825"
+  stroke="#26345c"/>
 
 
-    <circle
-      cx="190.5"
-      cy="840"
-      r="2.5"
-      fill="#818cf8"/>
+<text
+  x="60"
+  y="855"
+  class="mono muted"
+  font-size="13">
 
+CONNECT
 
-    <path
-      d="M197 845h5v2.1c1.5-1.8 3.4-2.7 5.9-2.7 5 0 7.1 3 7.1 8.1V860h-5.2v-6.8c0-2.4 0-5.4-3.3-5.4-3.3 0-3.8 2.6-3.8 5.2v7H197z"
-      fill="#818cf8"/>
+</text>
 
-  </a>
 
+<!-- GITHUB -->
 
-  <!-- ==================================================
-       INSTAGRAM
-  =================================================== -->
+<a href="https://github.com/YOUR_USERNAME">
 
-  <a
-    href="https://instagram.com/creat.it._/"
-    target="_blank">
+<circle
+  cx="145"
+  cy="850"
+  r="22"
+  fill="#0b1023"
+  stroke="#22d3ee"/>
 
-    <circle
-      cx="255"
-      cy="850"
-      r="22"
-      fill="#0b1023"
-      stroke="#e879f9"/>
+<!-- Octocat -->
 
+<g
+  transform="translate(132 837) scale(.027)"
+  fill="#22d3ee">
 
-    <!-- Instagram camera -->
+<path
+d="M512 32C247 32 32 247 32 512c0 212.2 137.6 392.1 328.4 455.7 24 4.4 32.8-10.4 32.8-23.1 0-11.5-.4-41.9-.7-82.3-133.6 29-161.9-64.4-161.9-64.4-21.8-55.5-53.3-70.3-53.3-70.3-43.6-29.8 3.3-29.2 3.3-29.2 48.2 3.4 73.6 49.5 73.6 49.5 42.8 73.4 112.2 52.2 139.5 39.9 4.3-31 16.7-52.2 30.4-64.2-106.7-12.1-218.8-53.3-218.8-237.2 0-52.4 18.7-95.2 49.4-128.8-5-12.1-21.4-60.9 4.7-127 0 0 40.3-12.9 132.1 49.2 38.3-10.6 79.4-15.9 120.3-16.1 40.9.2 82 5.5 120.3 16.1 91.8-62.1 132-49.2 132-49.2 26.2 66.1 9.8 114.9 4.8 127 30.8 33.6 49.4 76.4 49.4 128.8 0 184.3-112.3 224.9-219.2 236.8 17.2 14.8 32.6 43.9 32.6 88.5 0 63.9-.6 115.4-.6 131.1 0 12.8 8.7 27.6 33 23C874.5 904 1008 724 1008 512 1008 247 793 32 528 32h-16z"/>
 
-    <rect
-      x="242"
-      y="837"
-      width="26"
-      height="26"
-      rx="7"
-      fill="none"
-      stroke="#e879f9"
-      stroke-width="3"/>
+</g>
 
+</a>
 
-    <circle
-      cx="255"
-      cy="850"
-      r="6"
-      fill="none"
-      stroke="#e879f9"
-      stroke-width="3"/>
 
+<!-- LINKEDIN -->
 
-    <circle
-      cx="263"
-      cy="842"
-      r="2"
-      fill="#e879f9"/>
+<a href="https://www.linkedin.com/in/YOUR_USERNAME/">
 
-  </a>
+<circle
+  cx="200"
+  cy="850"
+  r="22"
+  fill="#0b1023"
+  stroke="#818cf8"/>
 
 
-  <!-- ==================================================
-       EMAIL
-  =================================================== -->
+<!-- LinkedIn logo -->
 
-  <a
-    href="mailto:hamdihocineamine@gmail.com"
-    target="_blank">
+<rect
+  x="188"
+  y="845"
+  width="5"
+  height="15"
+  rx="1"
+  fill="#818cf8"/>
 
-    <circle
-      cx="310"
-      cy="850"
-      r="22"
-      fill="#0b1023"
-      stroke="#4ade80"/>
+<circle
+  cx="190.5"
+  cy="840"
+  r="2.5"
+  fill="#818cf8"/>
 
+<path
+  d="M197 845h5v2.1c1.5-1.8 3.4-2.7 5.9-2.7 5 0 7.1 3 7.1 8.1V860h-5.2v-6.8c0-2.4 0-5.4-3.3-5.4-3.3 0-3.8 2.6-3.8 5.2v7H197z"
+  fill="#818cf8"/>
 
-    <!-- Envelope -->
+</a>
 
-    <path
-      d="M298 843h24v14h-24z"
-      fill="none"
-      stroke="#4ade80"
-      stroke-width="2"/>
 
+<!-- INSTAGRAM -->
 
-    <path
-      d="M299 844l11 8 11-8"
-      fill="none"
-      stroke="#4ade80"
-      stroke-width="2"/>
+<a href="https://instagram.com/YOUR_USERNAME">
 
-  </a>
+<circle
+  cx="255"
+  cy="850"
+  r="22"
+  fill="#0b1023"
+  stroke="#e879f9"/>
 
 
-  <!-- Footer -->
+<!-- Instagram logo -->
 
-  <text
-    x="350"
-    y="855"
-    class="mono"
-    font-size="13"
-    fill="#64748b">
+<rect
+  x="242"
+  y="837"
+  width="26"
+  height="26"
+  rx="7"
+  fill="none"
+  stroke="#e879f9"
+  stroke-width="3"/>
 
-    Code • Design • Visualize • Create
+<circle
+  cx="255"
+  cy="850"
+  r="6"
+  fill="none"
+  stroke="#e879f9"
+  stroke-width="3"/>
 
-  </text>
+<circle
+  cx="263"
+  cy="842"
+  r="2"
+  fill="#e879f9"/>
 
+</a>
 
-  <text
-    x="900"
-    y="855"
-    class="mono cyan"
-    font-size="12">
 
-    [ SYSTEM ONLINE ]
+<!-- EMAIL -->
 
-  </text>
+<a href="mailto:YOUR_EMAIL@example.com">
+
+<circle
+  cx="310"
+  cy="850"
+  r="22"
+  fill="#0b1023"
+  stroke="#4ade80"/>
+
+<path
+  d="M298 843h24v14h-24z"
+  fill="none"
+  stroke="#4ade80"
+  stroke-width="2"/>
+
+<path
+  d="M299 844l11 8 11-8"
+  fill="none"
+  stroke="#4ade80"
+  stroke-width="2"/>
+
+</a>
+
+
+<text
+  x="350"
+  y="855"
+  class="mono"
+  font-size="13"
+  fill="#64748b">
+
+Code • Design • Visualize • Create
+
+</text>
+
+
+<text
+  x="900"
+  y="855"
+  class="mono cyan"
+  font-size="12">
+
+[ SYSTEM ONLINE ]
+
+</text>
 
 
 </svg>
